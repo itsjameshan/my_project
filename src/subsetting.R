@@ -112,4 +112,15 @@ gg<-c(xlist[["b"]])
 gg[2]
 
 mod <- aov(pop ~ lifeExp, data=gapminder)
+names(gapminder)
 mod
+mod$df.residual
+
+gapminder[gapminder$year == 1957,]
+head(gapminder, n=5)
+gapminder[,-(1:4)]
+tail(gapminder, n=5)
+gapminder[gapminder$lifeExp > 80,]
+gapminder[, c(1,5,6)]
+gapminder[gapminder$year == 2002 | gapminder$year==2007,]
+data_small <- rbind(gapminder[(1:9),],gapminder[(19:23),])

@@ -45,6 +45,14 @@ dfc2 <- rbind(dfc2,list("Dharmic","Payyala", 23))
 #dfc2 <- dfc2[-2,]
 dfc2 <- cbind(dfc2,confuse=c("Y","Y"))
 
+rm(m)
+m <- matrix(1:9, nrow=3)
+m
+colnames(m) <- letters[1:3] # works as you would expect
+names(m) <- letters[1:3]  # destroys the matrix
+
+
+
 #read in gapminder
 gapminder <-  read.table("data/gapminder-FiveYearData.csv",
                          header=TRUE,
@@ -57,3 +65,5 @@ class(gapminder$country)
 head(gapminder)
 
 gapminder[gapminder$country=="Australia",]
+
+
