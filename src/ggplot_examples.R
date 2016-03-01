@@ -1,6 +1,10 @@
 library(ggplot2)
+gapminder  <- read.csv("data/gapminder-FiveYearData.csv",stringsAsFactors = FALSE)
+
 names(gapminder)
+
 ggplot(gapminder,aes(x=year,y=gdpPercap))
+
 ggplot(gapminder,aes(x=lifeExp,y=gdpPercap)) + geom_point()
 ggplot(data = gapminder, aes(x =year, y = lifeExp)) + geom_point()
 ggplot(gapminder,aes(x=year,y=gdpPercap, by=country, color=continent))
@@ -17,7 +21,7 @@ ggplot(gapminder,aes(x=year,y=gdpPercap,
 ggplot(gapminder,aes(x=lifeExp,y=gdpPercap)) + 
   geom_point(aes(color = continent))  + scale_y_log10() + 
   geom_smooth(method="lm",size = 2, color="black", se =FALSE)
-
+ggsave("graphs/gdp_vs_lifeexp.pdf")
 # ggplot(gapminder,aes(x=lifeExp,y=gdpPercap)) + 
 #   geom_point(aes(color = continent))  + scale_y_log10() + 
 #   geom_smooth()
@@ -73,6 +77,14 @@ attributes(mod)
 summary(mod)
 residuals(mod)
 
+
+png("graphs/gdp_vs_life.png")
+ggplot(gapminder,
+       aes(x = lifeExp, y = gdpPercap)) +
+  geom_point(aes(color = continent)) +
+  scale_y_log10()+
+  geom_smooth()
+dev.off()
 
 # Challenge 5
 # Create a density plot of GDP per capita, filled by continent.
